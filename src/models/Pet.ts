@@ -16,15 +16,15 @@ const petSchema = new mongoose.Schema({
     },
     carry: {
         type: String,
-        required: false
+        required: true
     },
     weight:{
         type: Number,
-        required: false
+        required: true
     },
     date_of_birth:{
         type: Date,
-        required: false
+        required: true
     },
 },
 );
