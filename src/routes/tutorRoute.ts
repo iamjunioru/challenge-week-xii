@@ -3,10 +3,12 @@ import { tutorCreateValidator } from "../middlewares/validators/tutorCreateValid
 import { createTutorController } from "../controllers/tutor/TutorController.create";
 import { hashTutorPassword } from "../middlewares/hashTutorPassword";
 import { putTutors } from "../controllers/tutor/TutorController.fullUpdate";
+import { getAllTutors } from "../controllers/tutor/TutorController.listAll";
+
 
 const route = express.Router();
 
-route.get("/tutors");
+route.get("/tutors", getAllTutors);
 route.post(
     "/tutor",
     tutorCreateValidator,
