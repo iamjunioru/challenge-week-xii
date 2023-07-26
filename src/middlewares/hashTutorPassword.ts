@@ -11,6 +11,7 @@ export async function hashTutorPassword(
     const saltRounds = Number(process.env.SALT_ROUNDS!);
     const salt = await bcrypt.genSalt(saltRounds);
 
-    this.password = await bcrypt.hash(password, salt);
+    const encryptedPassword = await bcrypt.hash(password, salt);
+    req.body.password = encryptedPassword;
     next();
 }
