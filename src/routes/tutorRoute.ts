@@ -27,7 +27,6 @@ route.put(
 route.patch(
   "/tutor/:id",
    partialUpdateTutorController);
-route.put("/tutor/:id", putTutors);
 route.patch("/tutor/:id",
     validatePayload(tutorPartialUpdateValidationSchema),
     partialUpdateTutorController);
