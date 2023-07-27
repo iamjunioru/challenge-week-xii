@@ -18,8 +18,7 @@ route.post(
 );
 route.put(
   "/tutor/:id", 
-  tutorPutValidator, 
-  hashTutorPassword, 
+  tutorPutValidator,
   putTutorsController);
 route.patch(
   "/tutor/:id",
