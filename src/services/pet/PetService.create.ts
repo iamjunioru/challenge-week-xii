@@ -15,6 +15,7 @@ export async function createPetService(
 
     if (!desiredTutor) {
         res.status(StatusCodes.NOT_FOUND).json({ msg: "Tutor not found" });
+        return;
     }
 
     const createdPet = await createPet(pet);
