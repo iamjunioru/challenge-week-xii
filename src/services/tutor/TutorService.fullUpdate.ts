@@ -1,7 +1,10 @@
 import { TutorRepositoryFullUpdate } from "../../repository/tutor/TutorRepository.fullUpdate";
+import{ pick } from "lodash";
+import { Response } from "express";
 
 
 export class FullUpdateTutor{
+    res: Response;
     private tutorRepositoryFullUpdate: TutorRepositoryFullUpdate;
 
     constructor(){
@@ -22,9 +25,11 @@ export class FullUpdateTutor{
         await this.putTutorsData(id, tutorData);
 
 
-        const updatedTutorService = await this.tutorRepositoryFullUpdate.updateTutor(id, tutorData);
-
-        return updatedTutorService;
+        const updateTutor = await this.tutorRepositoryFullUpdate.updateTutor(id, tutorData);
+        
+        const tutorWithoutPasswordId = pick(updateTutor, ['name', 'phone', 'email', 'date_of_birth', 'zip_code']);
+        
+        return tutorWithoutPasswordId;
 
     }
 }

@@ -8,7 +8,8 @@ async function putTutorsController (req: Request, res: Response) {
     const tutorData = req.body;
 
     const updateTutor = await fullUpdateTutor.putTutors(idTutor, tutorData);
-    return res.status(200).json(updateTutor);
+
+    res.status(200).json(updateTutor);
 
 };
 
