@@ -19,14 +19,10 @@ route.post(
     hashTutorPassword,
     createTutorController
 );
-
 route.put(
   "/tutor/:id", 
   tutorPutValidator,
   putTutorsController);
-route.patch(
-  "/tutor/:id",
-   partialUpdateTutorController);
 route.patch("/tutor/:id",
     validatePayload(tutorPartialUpdateValidationSchema),
     partialUpdateTutorController);
