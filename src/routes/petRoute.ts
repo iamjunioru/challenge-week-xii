@@ -1,10 +1,19 @@
-import express from 'express';
+import express from "express";
+import { validatePayload } from "../middlewares/validatePayload";
+import { petValidationSchema } from "../models/validators/pet/PetValidationSchema";
+import { createPetController } from "../controllers/pet/PetController.create";
 
 const route = express.Router();
 
-route.post("/pet/:tutorId", );
-route.put("/pet/:petId/tutor/:tutorId", );
-route.patch("/pet/:petId/tutor/:tutorId", /* PATCH to update pet specific information */);
-route.delete("/pet/:petId/tutor/:tutorId", );
+route.post(
+    "/pet/:tutorId",
+    validatePayload(petValidationSchema),
+    createPetController
+);
+route.put("/pet/:petId/tutor/:tutorId");
+route.patch(
+    "/pet/:petId/tutor/:tutorId" /* PATCH to update pet specific information */
+);
+route.delete("/pet/:petId/tutor/:tutorId");
 
 export { route };
