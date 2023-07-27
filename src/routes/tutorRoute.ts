@@ -4,10 +4,10 @@ import { hashTutorPassword } from "../middlewares/hashTutorPassword";
 import { putTutorsController } from "../controllers/tutor/TutorController.fullUpdate";
 import { getAllTutors } from "../controllers/tutor/TutorController.listAll";
 import { partialUpdateTutorController } from "../controllers/tutor/TutorController.partialUpdate";
-import { tutorPutValidator } from "../middlewares/validators/tutorFullUpdateValidator";
 import { validatePayload } from "../middlewares/validatePayload";
 import { tutorCreateValidationSchema } from "../models/validators/tutor/TutorValidator.create";
 import { tutorPartialUpdateValidationSchema } from "../models/validators/tutor/TutorValidator.partialUpdate";
+import { tutorFullUpdateValidationSchema } from "../models/validators/tutor/TutorValidator.fullUpdate";
 
 
 const route = express.Router();
@@ -20,9 +20,10 @@ route.post(
     createTutorController
 );
 route.put(
-  "/tutor/:id", 
-  tutorPutValidator,
-  putTutorsController);
+  "/tutor/:id",
+  validatePayload(tutorFullUpdateValidationSchema),
+  putTutorsController
+);
 route.patch("/tutor/:id",
     validatePayload(tutorPartialUpdateValidationSchema),
     partialUpdateTutorController);
