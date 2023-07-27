@@ -4,7 +4,7 @@ import { FullUpdateTutor } from "../../services/tutor/TutorService.fullUpdate";
 
 const fullUpdateService = new FullUpdateTutor();
 
-async function putTutors (req: Request, res: Response) {
+async function putTutorsController (req: Request, res: Response) {
     try {
         const idTutor = req.params.id;
         const tutorData = req.body;
@@ -25,4 +25,4 @@ async function putTutors (req: Request, res: Response) {
     }
 };
 
-export {putTutors}
+export {putTutorsController}
