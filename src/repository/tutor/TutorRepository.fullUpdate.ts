@@ -9,4 +9,9 @@ export class TutorRepositoryFullUpdate{
             runValidators: true
         });
     }
+
+    async TutorExists(id: string) {
+        const tutor = await Tutor.findById(id);
+        return !!tutor;
+    }
 }

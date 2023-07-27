@@ -16,7 +16,11 @@ route.post(
   hashTutorPassword,
   createTutorController
 );
-route.put("/tutor/:id", tutorPutValidator, putTutorsController);
+route.put(
+  "/tutor/:id", 
+  tutorPutValidator, 
+  hashTutorPassword, 
+  putTutorsController);
 route.patch(
   "/tutor/:id",
    partialUpdateTutorController);
