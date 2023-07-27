@@ -12,6 +12,6 @@ export class TutorRepositoryFullUpdate{
 
     async TutorExists(id: string) {
         const tutor = await Tutor.findById(id);
-        return tutor;
+        return !!tutor;
     }
 }
