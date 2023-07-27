@@ -19,6 +19,7 @@
         "http-status-codes": "^2.2.0",
         "joi": "^17.9.2",
         "jsonwebtoken": "^9.0.0",
+        "lodash": "^4.17.21",
         "mongodb": "^5.6.0",
         "mongoose": "^7.3.1",
         "swagger-ui-express": "^4.6.3",
