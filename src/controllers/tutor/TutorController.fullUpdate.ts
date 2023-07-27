@@ -7,9 +7,9 @@ async function putTutorsController (req: Request, res: Response) {
     const idTutor = req.params.id;
     const tutorData = req.body;
 
-    const updateTutor = await fullUpdateTutor.putTutors(idTutor, tutorData);
+    return await fullUpdateTutor.putTutors(idTutor, tutorData, res);
 
-    res.status(200).json(updateTutor);
+    
 
 };
 
