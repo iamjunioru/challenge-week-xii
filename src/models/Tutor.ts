@@ -17,7 +17,7 @@ const tutorSchema = new mongoose.Schema({
         required: [true, 'must password provide'],
     },
     phone:{
-        type: Number,
+        type: String,
         required: [true, 'must phone provide'],
     },
     email:{
@@ -32,7 +32,7 @@ const tutorSchema = new mongoose.Schema({
         required: [true, 'must date_of_birth provide'],
     },
     zip_code:{
-        type: Number,
+        type: String,
         required: [true, 'must zip_code provide'],
     },
     pets:{

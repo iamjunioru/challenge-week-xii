@@ -8,10 +8,11 @@ export async function partialUpdateTutorService(
   updates: ITutor,
   res: Response
 ) {
-  try {
-    const updatedTutor = await partialUpdateTutor(tutorId, updates);
-    res.status(StatusCodes.OK).json(updates);
-  } catch (error) {
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: "Failed to update tutor" });
+  const updatedTutor = await partialUpdateTutor(tutorId, updates);
+
+  if (!updatedTutor) {
+    return res.status(StatusCodes.BAD_REQUEST).json({ msg: `No tutor with id ${tutorId}` });
   }
+
+  res.status(StatusCodes.OK).json(updates);
 }
