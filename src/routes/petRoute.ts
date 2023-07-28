@@ -2,11 +2,13 @@ import express from "express";
 import { validatePayload } from "../middlewares/validatePayload";
 import { petValidationSchema } from "../models/validators/pet/PetValidationSchema";
 import { createPetController } from "../controllers/pet/PetController.create";
+import { authenticateTutor } from "../middlewares/authenticator";
 
 const route = express.Router();
 
 route.post(
     "/pet/:tutorId",
+    authenticateTutor,
     validatePayload(petValidationSchema),
     createPetController
 );
