@@ -1,5 +1,6 @@
 import express from "express";
 import { createTutorController } from "../controllers/tutor/TutorController.create";
+import { deleteTutor } from "../controllers/tutor/TutorController.delete";
 import { hashTutorPassword } from "../middlewares/hashTutorPassword";
 import { putTutorsController } from "../controllers/tutor/TutorController.fullUpdate";
 import { getAllTutors } from "../controllers/tutor/TutorController.listAll";
@@ -31,6 +32,10 @@ route.patch(
     validatePayload(tutorPartialUpdateValidationSchema),
     partialUpdateTutorController
 );
-route.delete("/tutor/:id");
+route.delete(
+    "/tutor/:id",
+    authenticateTutor,
+    deleteTutor
+    );
 
 export { route };
