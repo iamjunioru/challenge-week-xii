@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { petSchema } from "../models/Pet";
 import { v4 as uuidv4 } from "uuid";
 
 const tutorSchema = new mongoose.Schema(
