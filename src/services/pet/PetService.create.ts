@@ -11,7 +11,7 @@ export async function createPetService(
     pet: IPet,
     res: Response
 ) {
-    const desiredTutor = await getTutor(tutorId);
+    const desiredTutor = await getTutor({ _id: tutorId });
 
     if (!desiredTutor) {
         res.status(StatusCodes.NOT_FOUND).json({ msg: "Tutor not found" });
