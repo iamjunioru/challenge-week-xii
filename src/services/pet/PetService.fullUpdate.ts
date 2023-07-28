@@ -3,6 +3,9 @@ import { IPet } from "../../models/interfaces/IPet";
 import { Response } from "express";
 import {pick} from "lodash";
 import { Tutor } from "../../models/Tutor";
+import { Pet } from "../../models/Pet";
+import { getTutor } from "../tutor/TutorService.getOne";
+import { StatusCodes } from "http-status-codes";
 
 
 
@@ -13,34 +16,24 @@ export class PetFullUpdateService{
         this.petRepository = new PetRepository();
     }
 
-    async updateFullPet(idPet: string, idTutor: string, petData: IPet){
-        const tutor = await Tutor.findById(idTutor);
+    async updateFullPet(idPet: string, idTutor: string, petData: IPet, res: Response){
+      const tutorExist = await getTutor({ _id: idTutor });
 
-        if (!tutor) {
-            throw new Error(` No tutor with id ${idTutor}`)
-        }
+      if (!tutorExist) {
+        res.status(StatusCodes.NOT_FOUND).json({ msg: `No tutor with id ${idTutor}` });
+        return;
+      }
 
-        const pet = tutor.pets.id(idPet);
+      const pet = await Pet.findById(idPet);
 
-        if (!pet) {
-            throw new Error(`No pet with id ${idPet}`);
-        } 
-
-        pet.name = petData.name;
-        pet.species = petData.species;
-        pet.carry = petData.carry;
-        pet.weight = petData.weight;
-        pet.date_of_birth = petData.date_of_birth;
-
-        pet.set(petData);
-        await tutor.save();
-
-        return pet
+      if (!pet) {
+        res.status(StatusCodes.NOT_FOUND).json({ msg: `No pet with id ${idTutor}`});
+        return;
+      }
     }
 
     async putPets(idPet: string, idTutor: string, petData: IPet, res: Response){
-        await this.updateFullPet(idPet, idTutor, petData);
-        
+        await this.updateFullPet(idPet, idTutor, petData, res);
         const updatedPet = await this.petRepository.updatePet(idPet, idTutor, petData);
 
         const petWithoutId = pick(updatedPet, ['name', 'species', 'carry', 'weight', 'date_of_birth']);
