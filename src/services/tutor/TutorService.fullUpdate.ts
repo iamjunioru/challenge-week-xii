@@ -2,6 +2,8 @@ import { TutorRepositoryFullUpdate } from "../../repository/tutor/TutorRepositor
 import{ pick } from "lodash";
 import { Response } from "express";
 import { ITutor } from "../../models/interfaces/ITutor";
+import CustomError from "../../errors/CustomError";
+import { StatusCodes } from "http-status-codes";
 
 
 export class FullUpdateTutor{
@@ -16,7 +18,7 @@ export class FullUpdateTutor{
         const tutorExists = await this.tutorRepositoryFullUpdate.TutorExists(id);
 
         if (!tutorExists) {
-            throw new Error(`Não há tutor com o ID ${id}`);
+            throw new CustomError(`Não há tutor com o ID ${id}`, StatusCodes.BAD_REQUEST);
         }
     }
 
@@ -29,7 +31,7 @@ export class FullUpdateTutor{
         
         const tutorWithoutPasswordId = pick(updateTutor, ['name', 'phone', 'email', 'date_of_birth', 'zip_code']);
         
-        return res.status(200).json(tutorWithoutPasswordId);
+        return res.status(StatusCodes.OK).json(tutorWithoutPasswordId);
 
     }
 }
