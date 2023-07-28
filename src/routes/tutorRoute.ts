@@ -8,11 +8,11 @@ import { validatePayload } from "../middlewares/validatePayload";
 import { tutorCreateValidationSchema } from "../models/validators/tutor/TutorValidator.create";
 import { tutorPartialUpdateValidationSchema } from "../models/validators/tutor/TutorValidator.partialUpdate";
 import { tutorFullUpdateValidationSchema } from "../models/validators/tutor/TutorValidator.fullUpdate";
-
+import { authenticateTutor } from "../middlewares/authenticator";
 
 const route = express.Router();
 
-route.get("/tutors", getAllTutors);
+route.get("/tutors", authenticateTutor, getAllTutors);
 route.post(
     "/tutor",
     validatePayload(tutorCreateValidationSchema),
@@ -20,13 +20,17 @@ route.post(
     createTutorController
 );
 route.put(
-  "/tutor/:id",
-  validatePayload(tutorFullUpdateValidationSchema),
-  putTutorsController
+    "/tutor/:id",
+    authenticateTutor,
+    validatePayload(tutorFullUpdateValidationSchema),
+    putTutorsController
 );
-route.patch("/tutor/:id",
+route.patch(
+    "/tutor/:id",
+    authenticateTutor,
     validatePayload(tutorPartialUpdateValidationSchema),
-    partialUpdateTutorController);
+    partialUpdateTutorController
+);
 route.delete("/tutor/:id");
 
 export { route };
