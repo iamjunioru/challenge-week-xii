@@ -14,7 +14,8 @@ route.post(
     createPetController
 );
 route.put(
-    "/pet/:petId/tutor/:tutorId", 
+    "/pet/:petId/tutor/:tutorId",
+    authenticateTutor,
     validatePayload(petValidationSchema), 
     putPetsController
 );
