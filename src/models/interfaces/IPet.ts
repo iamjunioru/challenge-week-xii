@@ -5,4 +5,5 @@ export interface IPet {
     carry: string;
     weight: number;
     date_of_birth: Date;
+    tutorId: string;
 }
