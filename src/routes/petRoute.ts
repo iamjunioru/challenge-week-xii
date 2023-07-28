@@ -6,6 +6,7 @@ import { putPetsController } from "../controllers/pet/PetController.fullUpdate";
 import { authenticateTutor } from "../middlewares/authenticator";
 import { partialUpdatePetController } from "../controllers/pet/PetController.partialUpdate";
 import { petPartialUpdateValidationSchema } from "../models/validators/pet/PetValidator.partialUpdate";
+import { formatDate } from "../middlewares/formatDate";
 
 const route = express.Router();
 
@@ -13,20 +14,23 @@ route.post(
     "/pet/:tutorId",
     authenticateTutor,
     validatePayload(petValidationSchema),
+    formatDate,
     createPetController
 );
 route.put(
     "/pet/:petId/tutor/:tutorId",
     authenticateTutor,
-    validatePayload(petValidationSchema), 
+    validatePayload(petValidationSchema),
+    formatDate,
     putPetsController
 );
 route.patch(
     "/pet/:petId/tutor/:tutorId",
     authenticateTutor,
     validatePayload(petPartialUpdateValidationSchema),
-    partialUpdatePetController 
-  );
+    formatDate,
+    partialUpdatePetController
+);
 route.delete("/pet/:petId/tutor/:tutorId");
 
 export { route };
