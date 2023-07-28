@@ -2,6 +2,8 @@ import express from "express";
 import { validatePayload } from "../middlewares/validatePayload";
 import { petValidationSchema } from "../models/validators/pet/PetValidationSchema";
 import { createPetController } from "../controllers/pet/PetController.create";
+import { putPetsController } from "../controllers/pet/PetController.fullUpdate";
+
 
 const route = express.Router();
 
@@ -10,7 +12,11 @@ route.post(
     validatePayload(petValidationSchema),
     createPetController
 );
-route.put("/pet/:petId/tutor/:tutorId");
+route.put(
+    "/pet/:petId/tutor/:tutorId", 
+    validatePayload(petValidationSchema), 
+    putPetsController
+);
 route.patch(
     "/pet/:petId/tutor/:tutorId" /* PATCH to update pet specific information */
 );
