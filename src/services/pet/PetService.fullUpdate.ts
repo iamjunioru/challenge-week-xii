@@ -6,6 +6,7 @@ import { Tutor } from "../../models/Tutor";
 import { Pet } from "../../models/Pet";
 import { getTutor } from "../tutor/TutorService.getOne";
 import { StatusCodes } from "http-status-codes";
+import CustomError from "../../errors/CustomError";
 
 
 
@@ -20,15 +21,15 @@ export class PetFullUpdateService{
       const tutorExist = await getTutor({ _id: idTutor });
 
       if (!tutorExist) {
-        res.status(StatusCodes.NOT_FOUND).json({ msg: `No tutor with id ${idTutor}` });
-        return;
+        throw new CustomError(`No tutor with id ${idTutor}`, 
+        StatusCodes.BAD_REQUEST);
       }
 
       const pet = await Pet.findById(idPet);
 
       if (!pet) {
-        res.status(StatusCodes.NOT_FOUND).json({ msg: `No pet with id ${idTutor}`});
-        return;
+        throw new CustomError(`No pet with id ${idTutor}`, 
+        StatusCodes.BAD_REQUEST);
       }
     }
 
@@ -38,6 +39,6 @@ export class PetFullUpdateService{
 
         const petWithoutId = pick(updatedPet, ['name', 'species', 'carry', 'weight', 'date_of_birth']);
 
-        return res.status(200).json(petWithoutId);
+        return res.status(StatusCodes.OK).json(petWithoutId);
     }
 }
