@@ -1,5 +1,5 @@
-import { Pet } from "../../models/Pet";
+import { Tutor } from "../../models/Tutor";
 
-export async function findByIdTutor(id: string) {
-  return Pet.findOne({tutorId: id })
-};
+export async function deleteTutorRepository(id: string) {
+    return Tutor.deleteOne({ _id:id });
+}
