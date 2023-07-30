@@ -17,7 +17,7 @@ export async function deleteTutorService(id: string, res:Response) {
 
     if (!pets) {
         const isDeleted = await deleteTutorRepository(tutor._id.toString())
-        if (isDeleted.deletedCount) return res.status(200).json({msg: `Tutor has deleted` })
+        if (isDeleted.deletedCount) return res.status(204).json({msg: `Tutor has deleted` })
     }
     throw new CustomError(`Tutor have an pet`, StatusCodes.BAD_REQUEST);
 }
