@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import * as tutorDB from '../../../repository/tutor/TutorRepository.create';
+import * as tutorServ from '../../../services/tutor/TutorService.create';
 import { createTutorController } from '../../../controllers/tutor/TutorController.create';
 import { ITutor } from '../../../models/interfaces/ITutor';
 
@@ -10,7 +10,7 @@ describe('Tutor creation controller', () => {
 
     beforeAll(() => {
         createTutorMock = jest
-            .spyOn(tutorDB, 'createTutor')
+            .spyOn(tutorServ, 'createTutorService')
             .mockImplementation(jest.fn());
 
         req = {
