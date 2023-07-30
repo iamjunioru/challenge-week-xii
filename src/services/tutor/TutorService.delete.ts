@@ -1,6 +1,6 @@
 import { deleteTutorRepository } from "../../repository/tutor/TutorRepository.delete";
 import { getOneTutor } from "../../repository/tutor/TutorRepository.getOne";
-import { findByIdTutor } from "../../repository/pet/PetRepository.findone";
+import { findByIdTutor } from "../../repository/pet/PetRepository.findByIdTutor";
 import { StatusCodes } from "http-status-codes";
 import { Response } from "express";
 import CustomError from "../../errors/CustomError";
