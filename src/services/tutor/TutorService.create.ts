@@ -4,7 +4,7 @@ import { StatusCodes } from "http-status-codes";
 import { createTutor } from "../../repository/tutor/TutorRepository.create";
 
 export async function createTutorService(tutor: ITutor, res: Response) {
-    await createTutor(tutor);
+    const createdTutor = await createTutor(tutor);
 
-    res.status(StatusCodes.CREATED).json(tutor);
+    res.status(StatusCodes.CREATED).json(createdTutor);
 }
