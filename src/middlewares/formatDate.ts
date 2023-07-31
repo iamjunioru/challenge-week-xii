@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response } from 'express';
 
 export async function formatDate(
     req: Request,
@@ -6,7 +6,7 @@ export async function formatDate(
     next: NextFunction
 ) {
     if (req.body.date_of_birth) {
-        const date_of_birth = Date.parse(req.body.date_of_birth + " GMT");
+        const date_of_birth = new Date(req.body.date_of_birth + ' GMT');
         Object.assign(req.body, { date_of_birth });
     }
     next();
