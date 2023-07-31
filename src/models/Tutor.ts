@@ -1,46 +1,42 @@
 import mongoose from "mongoose";
-import { petSchema } from "../models/Pet";
-import{v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
-const tutorSchema = new mongoose.Schema({
-    _id:{
-        type: String,
-        default: uuidv4,
+const tutorSchema = new mongoose.Schema(
+    {
+        _id: {
+            type: String,
+            default: uuidv4,
+        },
+        name: {
+            type: String,
+            required: [true, "must provide name"],
+        },
+        password: {
+            type: String,
+            required: [true, "must provide password"],
+        },
+        phone: {
+            type: String,
+            required: [true, "must provide phone"],
+        },
+        email: {
+            type: String,
+            required: [true, "must provide email"],
+            unique: true,
+            validate: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/],
+        },
+        date_of_birth: {
+            type: Date,
+            required: [true, "must provide date_of_birth"],
+        },
+        zip_code: {
+            type: String,
+            required: [true, "must provide zip_code"],
+        },
+    },
+    { versionKey: false }
+);
 
-    },
-    name:{
-        type: String,
-        required: [true, 'must name provide'],
-    },
-    password:{
-        type: String,
-        required: [true, 'must password provide'],
-    },
-    phone:{
-        type: Number,
-        required: [true, 'must phone provide'],
-    },
-    email:{
-        type: String,
-        required: [true, 'must email provide'],
-        unique: true,
-        validate: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/]
+const Tutor = mongoose.model("Tutor", tutorSchema);
 
-    },
-    date_of_birth:{
-        type: Date,
-        required: [true, 'must date_of_birth provide'],
-    },
-    zip_code:{
-        type: Number,
-        required: [true, 'must zip_code provide'],
-    },
-    pets:{
-        type:[petSchema],
-    },
- },
- );
-
- const Tutor = mongoose.model("Tutor", tutorSchema);
-
- export {Tutor}
+export { Tutor };
