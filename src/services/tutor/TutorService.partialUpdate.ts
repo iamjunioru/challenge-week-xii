@@ -11,7 +11,7 @@ export async function partialUpdateTutorService(
   const updatedTutor = await partialUpdateTutor(tutorId, updates);
 
   if (!updatedTutor) {
-    return res.status(StatusCodes.BAD_REQUEST).json({ msg: `No tutor with id ${tutorId}` });
+    return res.status(StatusCodes.NOT_FOUND).json({ msg: `No tutor with id ${tutorId}` });
   }
 
   res.status(StatusCodes.OK).json(updates);
