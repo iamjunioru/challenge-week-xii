@@ -10,3 +10,5 @@ export class PetRepository{
         return pet;
     }
 }
+
+export const updatePet = new PetRepository().updatePet;
