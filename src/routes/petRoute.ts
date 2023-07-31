@@ -2,7 +2,7 @@ import express from "express";
 import { validatePayload } from "../middlewares/validatePayload";
 import { petValidationSchema } from "../models/validators/pet/PetValidationSchema";
 import { createPetController } from "../controllers/pet/PetController.create";
-import { putPetsController } from "../controllers/pet/PetController.fullUpdate";
+import { putPetsController } from '../controllers/pet/PetController.fullUpdate';
 import { authenticateTutor } from "../middlewares/authenticator";
 import { deletePetController } from "../controllers/pet/PetController.delete";
 import { partialUpdatePetController } from "../controllers/pet/PetController.partialUpdate";
@@ -19,7 +19,7 @@ route.post(
     createPetController
 );
 route.put(
-    "/pet/:petId/tutor/:tutorId",
+    '/pet/:petId/tutor/:tutorId',
     authenticateTutor,
     validatePayload(petValidationSchema),
     formatDate,

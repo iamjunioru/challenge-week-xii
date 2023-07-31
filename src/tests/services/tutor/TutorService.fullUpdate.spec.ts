@@ -5,7 +5,7 @@ import { StatusCodes } from 'http-status-codes';
 import { mock, when} from 'ts-mockito';
 
 
-jest.mock('/src/repository/tutor/TutorRepository.fullUpdate');
+jest.mock('../../../repository/tutor/TutorRepository.fullUpdate');
 
 describe('FullUpdateTutor', () => {
   let fullUpdateService: FullUpdateTutor;
@@ -18,6 +18,10 @@ describe('FullUpdateTutor', () => {
       status: jest.fn().mockReturnThis(),
       json: jest.fn().mockReturnThis(),
     } as unknown as Response;
+  });
+
+  afterAll(() => {
+    jest.clearAllMocks();
   });
 
   it('should return status 200 for updated tutor', async () => {

@@ -1,0 +1,645 @@
+{
+    "openapi": "3.0.3",
+    "info":{
+      "title":"API Veterinary Clinic",
+      "description": "This API aims to register tutors and pets",
+      "termsOfService": "",
+      "contact":{
+        "email": ["vanessaoliveiradasilva515@gmail.com", "italo.fernandes.om@gmail.com", "iamjunioru@gmail.com", "Andersonfielads2@gmail.com"]
+      },
+      "version": "2.0.0"
+    },
+    "servers": [
+      {
+        "url": "",
+        "description": "API test"
+      }
+    ],
+    "paths": {
+      "/tutor":{
+        "post":{
+          "summary": "Registration of tutor",
+          "description": "Route responsible for registering a new tutor",
+          "tags": ["Tutor"],
+          "requestBody": {
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref": "#/components/schemas/responseTutorPost"
+                },
+                "examples":{
+                  "tutor":{
+                    "value":{
+                        "name": "Leo",
+                        "password": "leo_lima9567",
+                        "phone": "69991458256",
+                        "email": "leo_lima@gmail.com",
+                        "date_of_birth": "2003-10-02",
+                        "zip_code": "84756900"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201":{
+              "description": "Created",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "$ref":"#/components/schemas/responseTutor"
+                  }
+                }
+              }
+            },
+            "500":{
+              "description": "Internal_Server_Error"
+            }
+          }
+        }
+      },
+      "/tutor/{Id}":{
+        "put":{
+          "summary": "Tutor update | Authentication required",
+          "description": "Route responsible for updating a tutor by ID",
+          "tags": ["Tutor"],
+          "security": [{"bearerAuth": []}],
+          "parameters":[
+            {
+              "name": "Id",
+              "in": "path",
+              "description":"Tutor update by ID",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref": "#/components/schemas/responseTutor"
+                },
+                "examples":{
+                  "tutor":{
+                    "value":{
+                        "name": "Lana Silva",
+                        "phone": "69991458726",
+                        "email": "lana_silva@gmail.com",
+                        "date_of_birth": "2003-10-08",
+                        "zip_code": "84756900"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "404":{
+              "description": "Bad_Request"
+            },
+            "200":{
+              "description": "Ok",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "$ref":"#/components/schemas/Tutor"
+                  }
+                }
+              }
+            },
+            "500":{
+              "description": "Internal_Server_Error"
+            }
+          }
+        },
+        "patch":{
+          "summary": "Tutor partial update | Authentication required",
+          "description": "Route responsible for partially updating a tutor by ID",
+          "tags": ["Tutor"],
+          "security": [{"bearerAuth": []}],
+          "parameters":[
+            {
+              "name": "Id",
+              "in": "path",
+              "description":"Tutor update by ID",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref": "#/components/schemas/responsePatch"
+                },
+                "examples":{
+                  "tutor":{
+                    "value":{
+                        "name": "Lana Silva",
+                        "zip_code": "84756900"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "404":{
+              "description": "NOT_FOUND"
+            },
+            "200":{
+              "description": "Ok",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "$ref":"#/components/schemas/responsePatch"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete":{
+          "summary": "Tutor deletion | Authentication required",
+          "description": "Route responsible for deleting a tutor by ID",
+          "tags": ["Tutor"],
+          "security": [{"bearerAuth": []}],
+          "parameters":[
+            {
+              "name": "Id",
+              "in": "path",
+              "description":"Tutor deletion by ID",
+              "required": true
+            }
+          ],
+          "responses":{
+            "204":{
+              "description": "No_Content"
+            },
+            "404": {
+              "description": "Bad_Request"
+            },
+            "500":{
+              "description": "Internal_Server_Error"
+            }
+          }
+        }
+      },
+      "/pet/{tutorId}":{
+        "post":{
+          "summary": "Pet registration | Authentication required",
+          "description": "Route responsible for registering a new pet to the ID of an existing tutor",
+          "tags": ["Pet"],
+          "security": [{"bearerAuth": []}],
+          "parameters":[
+            {
+              "name": "tutorId",
+              "in": "path",
+              "description":"Pet registration under the tutor's ID",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref": "#/components/schemas/responsePet"
+                },
+                "examples":{
+                  "pet":{
+                    "value":{
+                      "name": "Rex",
+                      "species": "dog",
+                      "carry": "p",
+                      "weight": 5,
+                      "date_of_birth": "2003-10-08"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "404":{
+              "description":"NOT_FOUND"
+            },
+            "201":{
+              "description": "Created",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "$ref":"#/components/schemas/Pet"
+                  }
+                }
+              }
+            },
+            "500":{
+              "description": "Internal_Server_Error"
+            }
+          }
+        }
+      },
+      "/pet/{petId}/tutor/{tutorId}":{
+        "put":{
+          "summary": "Pet update | Authentication required",
+          "description": "Route responsible for updating a pet by ID",
+          "tags": ["Pet"],
+          "security": [{"bearerAuth": []}],
+          "parameters":[
+            {
+              "name": "petId",
+              "in": "path",
+              "description":"Pet update by its own ID and the tutor's ID",
+              "required": true
+            },
+            {
+              "name": "tutorId",
+              "in": "path",
+              "description":"Pet update by its own ID and the tutor's ID",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref": "#/components/schemas/responsePet"
+                },
+                "examples":{
+                  "pet":{
+                    "value":{
+                      "name": "Puf",
+                      "species": "cat",
+                      "carry": "p",
+                      "weight": 5,
+                      "date_of_birth": "2003-10-08"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "400":{
+              "description":"Bad_Request"
+            },
+            "200":{
+              "description": "Ok",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "$ref":"#/components/schemas/responsePet"
+                  }
+                }
+              }
+            },
+            "500":{
+              "description": "Internal_Server_Error"
+            }
+          }
+        },
+        "patch":{
+          "summary": "Pet partial update | Authentication required",
+          "description": "Route responsible for partially updating a pet by ID",
+          "tags": ["Pet"],
+          "security": [{"bearerAuth": []}],
+          "parameters":[
+            {
+              "name": "petId",
+              "in": "path",
+              "description":"Pet update by its own ID and the tutor's ID",
+              "required": true
+            },
+            {
+              "name": "tutorId",
+              "in": "path",
+              "description":"Pet update by its own ID and the tutor's ID",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref": "#/components/schemas/responsePetPatch"
+                },
+                "examples":{
+                  "pet":{
+                    "value":{
+                      "name": "Puf",
+                      "date_of_birth": "2003-10-08"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "400":{
+              "description":"Bad_Request"
+            },
+            "200":{
+              "description": "Ok",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "$ref":"#/components/schemas/responsePetPatch"
+                  }
+                }
+              }
+            },
+            "500":{
+              "description": "Internal_Server_Error"
+            }
+          }
+        },
+        "delete":{
+            "summary": "Pet deletion | Authentication required",
+            "description": "Route responsible for deleting a pet by ID",
+            "tags": ["Pet"],
+            "security": [{"bearerAuth": []}],
+            "parameters":[
+              {
+                "name": "petId",
+                "in": "path",
+                "description":"Pet deletion by its own ID and the tutor's ID",
+                "required": true
+              },
+              {
+                "name": "tutorId",
+                "in": "path",
+                "description":"Pet deletion by its own ID and the tutor's ID",
+                "required": true
+              }
+            ],
+            "responses":{
+              "204":{
+                "description": "No_Content"
+              },
+              "400": {
+                "description": "Bad_Request"
+              },
+              "500":{
+                "description": "Internal_Server_Error"
+              }
+            }
+        }
+      },
+      "/tutors":{
+        "get":{
+          "summary": "Tutors search | Authentication Required",
+          "description": "Search for all tutors",
+          "tags": ["Tutor"],
+          "security": [{"bearerAuth": []}],
+          "responses":{
+            "200":{
+              "description": "Ok",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "type": "array",
+                    "items":{
+                      "$ref":"#/components/schemas/responseTutorGet"
+                    }
+                  },
+                  "500":{
+                    "description": "Internal_Server_Error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/auth":{
+        "post":{
+          "summary":"Tutor authentication",
+          "description": "Tutor authentication to generate a token",
+          "tags":["Auth"],
+          "requestBody": {
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref": "#/components/schemas/createWebtoken"
+              },
+              "examples":{
+                "tutor":{
+                  "value":{
+                    "email": "leo_lima@gmail.com",
+                    "password": "leo_lima9567"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "401":{
+            "description": "Unauthorized"
+          },
+          "200":{
+            "description": "Ok",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type": "object",
+                  "items":{
+                    "$ref":"#/components/schemas/createWebtoken"
+                  }
+              }
+            }
+          }
+        },
+        "500":{
+          "description": "Internal_Server_Error"
+          }
+        }
+      }
+    }
+    },
+    "components":{
+      "schemas":{
+        "Tutor":{
+          "type": "object",
+          "properties":{
+            "id":{
+              "type": "uuid"
+            },
+            "name":{
+              "type": "string"
+            },
+            "password":{
+              "type":"string"
+            },
+            "phone":{
+              "type": "string"
+            },
+            "email":{
+              "type":"string"
+            },
+            "date_of_birth":{
+              "type":"date"
+            },
+            "zip_code":{
+              "type":"string"
+            }
+          }
+        },
+        "responseTutorGet":{
+          "type": "object",
+          "properties":{
+            "id":{
+              "type":"uuid"
+            },
+            "name":{
+              "type": "string"
+            },
+            "phone":{
+              "type": "string"
+            },
+            "email":{
+              "type":"string"
+            },
+            "date_of_birth":{
+              "type":"date"
+            },
+            "zip_code":{
+              "type":"string"
+            }
+          }
+        },
+        "responseTutorPost":{
+          "type": "object",
+          "properties":{
+            "name":{
+              "type": "string"
+            },
+            "password":{
+              "type":"string"
+            },
+            "phone":{
+              "type": "string"
+            },
+            "email":{
+              "type":"string"
+            },
+            "date_of_birth":{
+              "type":"date"
+            },
+            "zip_code":{
+              "type":"string"
+            }
+          }
+        },
+        "responseTutor":{
+          "type": "object",
+          "properties":{
+            "name":{
+              "type": "string"
+            },
+            "phone":{
+              "type": "string"
+            },
+            "email":{
+              "type":"string"
+            },
+            "date_of_birth":{
+              "type":"date"
+            },
+            "zip_code":{
+              "type":"number"
+            }
+          }
+        },
+        "responsePatch":{
+          "type": "object",
+          "properties":{
+            "name":{
+              "type": "string"
+            },
+            "zip_code":{
+              "type":"string"
+            }
+          }
+        },
+        "Pet":{
+          "type": "object",
+          "properties":{
+            "id":{
+              "type": "uuid"
+            },
+            "name":{
+              "type": "string"
+            },
+            "species":{
+              "type":"string"
+            },
+            "carry":{
+              "type": "string"
+            },
+            "weight":{
+              "type":"number"
+            },
+            "date_of_birth":{
+              "type":"date"
+            }
+          }
+        },
+        "responsePet":{
+          "type": "object",
+          "properties":{
+            "name":{
+              "type": "string"
+            },
+            "species":{
+              "type":"string"
+            },
+            "carry":{
+              "type": "string"
+            },
+            "weight":{
+              "type":"number"
+            },
+            "date_of_birth":{
+              "type":"date"
+            }
+          }
+        },
+        "responsePetPatch":{
+          "type": "object",
+          "properties":{
+            "name":{
+              "type": "string"
+            },
+            "date_of_birth":{
+              "type":"date"
+            }
+          }
+        },
+        "createWebtoken":{
+          "type": "object",
+          "properties":{
+            "email":{
+              "type": "string"
+            },
+            "password":{
+              "type":"string"
+            }
+          }
+        }
+      },
+      "securitySchemes":{
+        "bearerAuth":{
+          "description": "Authentication using JWT (JSON Web Token)",
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+        }
+      }
+    }
+  }

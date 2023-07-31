@@ -2,13 +2,13 @@ import express from "express";
 import { createTutorController } from "../controllers/tutor/TutorController.create";
 import { deleteTutorController } from "../controllers/tutor/TutorController.delete";
 import { hashTutorPassword } from "../middlewares/hashTutorPassword";
-import { putTutorsController } from "../controllers/tutor/TutorController.fullUpdate";
+import { putTutorsController } from '../controllers/tutor/TutorController.fullUpdate';
 import { getAllTutors } from "../controllers/tutor/TutorController.listAll";
 import { partialUpdateTutorController } from "../controllers/tutor/TutorController.partialUpdate";
 import { validatePayload } from "../middlewares/validatePayload";
 import { tutorCreateValidationSchema } from "../models/validators/tutor/TutorValidator.create";
 import { tutorPartialUpdateValidationSchema } from "../models/validators/tutor/TutorValidator.partialUpdate";
-import { tutorFullUpdateValidationSchema } from "../models/validators/tutor/TutorValidator.fullUpdate";
+import { tutorFullUpdateValidationSchema } from '../models/validators/tutor/TutorValidator.fullUpdate';
 import { authenticateTutor } from "../middlewares/authenticator";
 import { formatDate } from "../middlewares/formatDate";
 
@@ -23,7 +23,7 @@ route.post(
     createTutorController
 );
 route.put(
-    "/tutor/:id",
+    '/tutor/:id',
     authenticateTutor,
     validatePayload(tutorFullUpdateValidationSchema),
     formatDate,
