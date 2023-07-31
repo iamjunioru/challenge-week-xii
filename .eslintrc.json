@@ -6,7 +6,6 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb",
         "plugin:@typescript-eslint/recommended",
         "prettier",
         "plugin:prettier/recommended"
@@ -18,7 +17,6 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react",
         "@typescript-eslint",
         "eslint-plugin-import-helpers",
         "prettier"
