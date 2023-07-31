@@ -1,4 +1,5 @@
 <!-- be happy :) -->
+<br>
 <div align="center"> <!-- centralize -->   
   <a href="https://github.com/iamjunioru/challenge-week-xii">    
     <img src="https://github.com/iamjunioru/challenge-week-xii/blob/style/resources/img/header_logo.png" alt="Logo" width="745" height="214"> <!-- IMAGine -->
