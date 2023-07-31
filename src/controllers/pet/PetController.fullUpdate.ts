@@ -1,6 +1,6 @@
-import { Request, Response } from 'express';
-import { PetFullUpdateService } from '../../services/pet/PetService.fullUpdate';
-import { IPet } from '../../models/interfaces/IPet';
+import { Request, Response } from "express";
+import { PetFullUpdateService } from "../../services/pet/PetService.fullUpdate";
+import { IPet } from "../../models/interfaces/IPet";
 
 const petFullUpdateService = new PetFullUpdateService();
 
