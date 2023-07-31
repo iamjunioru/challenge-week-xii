@@ -40,7 +40,7 @@ Then, run the following commands:
 **Bash**
 
 ```bash
-  cd ~/[folder-of-choice]/compass-challenge-week8
+  cd ~/[folder-of-choice]/compass-challenge-week12
 
   npm install
 ```
@@ -65,17 +65,21 @@ compass-challenge-week8/
 ```
 
 ```
-JWT_SECRET=string of your choice
-JWT_LIFETIME=1d
 MONGO_URI=string for connecting with your Mongo database
 SALT_ROUNDS=number of hashing rounds performed to encrypt the password before storing in
 the database
+JWT_SECRET=string of your choice
+JWT_LIFETIME=1d
 ```
 
 After performing the installation, run the following command to build the application:
 
 ```bash
   npm run build
+```
+or
+```bash
+  yarn run build
 ```
 
 Now, the application can be run! By default, it will run on PORT 3000. If you have another service running on this PORT, you can assign a free port to run the application. The commands are as follows:
@@ -114,25 +118,25 @@ In this page, it is possible to test the API endpoints.
 
 #### Authentication
 
-```http
+```
   POST /api/v1/auth
 ```
 
 #### Returns all tutors
 
-```http
+```
   GET /api/v1/tutors
 ```
 
 #### Adds a tutor to database
 
-```http
+```
   POST /api/v1/tutor
 ```
 
 #### Update tutor's attributes
 
-```http
+```
   PUT /api/v1/tutor/{:id}
 ```
 
@@ -142,7 +146,7 @@ In this page, it is possible to test the API endpoints.
 
 #### Delete tutor from database
 
-```http
+```
   PUT /api/v1/tutor/{:id}
 ```
 
@@ -152,17 +156,17 @@ In this page, it is possible to test the API endpoints.
 
 #### Assigns a pet to a tutor
 
-```http
+```
   POST /api/v1/pet/{:tutorId}
 ```
 
 | Parameter | Type     | Description                                              |
 | :-------- | :------- | :------------------------------------------------------- |
-| `tutorId` | `strung` | **Required**. ID of the tutor you want to assign the pet |
+| `tutorId` | `string` | **Required**. ID of the tutor you want to assign the pet |
 
 #### Update pet's attributes
 
-```http
+```
   PUT /api/v1/pet/{:petId}/tutor/{:tutorId}
 ```
 
@@ -173,7 +177,7 @@ In this page, it is possible to test the API endpoints.
 
 #### Delete pet from database
 
-```http
+```
   PUT /api/v1/pet/{:petId}/tutor/{:tutorId}
 ```
 
@@ -191,7 +195,3 @@ In this page, it is possible to test the API endpoints.
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 Thanks goes to these wonderful people. ✨
-
-## License
-
-SpaceX Land API is MIT licensed, as found in the [LICENSE](https://github.com/spacexland/api/blob/master/LICENSE) file.
