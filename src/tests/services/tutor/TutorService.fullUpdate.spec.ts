@@ -1,8 +1,8 @@
-import { FullUpdateTutor } from '../../../services/tutor/TutorService.fullUpdate';
-import { TutorRepositoryFullUpdate, updateTutor } from '../../../repository/tutor/TutorRepository.fullUpdate';
-import { Request, Response } from 'express';
-import { StatusCodes } from 'http-status-codes';
-import { mock, when} from 'ts-mockito';
+import { FullUpdateTutor } from "../../../services/tutor/TutorService.fullUpdate";
+import { TutorRepositoryFullUpdate, updateTutor } from "../../../repository/tutor/TutorRepository.fullUpdate";
+import { Request, Response } from "express";
+import { StatusCodes } from "http-status-codes";
+import { mock, when} from "ts-mockito";
 
 
 jest.mock('../../../repository/tutor/TutorRepository.fullUpdate');
