@@ -1,7 +1,5 @@
 import { Tutor } from "../../models/Tutor";
 
-
-
 export class TutorRepositoryFullUpdate{
 
     async updateTutor(id: string, tutorData: any) {
@@ -16,3 +14,5 @@ export class TutorRepositoryFullUpdate{
         return !!tutor;
     }
 }
+
+export const updateTutor = new TutorRepositoryFullUpdate().updateTutor;

@@ -2,7 +2,6 @@ import { PetRepository } from "../../repository/pet/PetRepository.fullUpdate";
 import { IPet } from "../../models/interfaces/IPet";
 import { Response } from "express";
 import {pick} from "lodash";
-import { Tutor } from "../../models/Tutor";
 import { Pet } from "../../models/Pet";
 import { getTutor } from "../tutor/TutorService.getOne";
 import { StatusCodes } from "http-status-codes";
@@ -11,6 +10,9 @@ import CustomError from "../../errors/CustomError";
 
 
 export class PetFullUpdateService{
+    findById(idPet: string): any {
+      throw new Error('Method not implemented.');
+    }
     private petRepository: PetRepository;
 
     constructor(){
@@ -28,7 +30,7 @@ export class PetFullUpdateService{
       const pet = await Pet.findById(idPet);
 
       if (!pet) {
-        throw new CustomError(`No pet with id ${idTutor}`, 
+        throw new CustomError(`No pet with id ${idPet}`, 
         StatusCodes.BAD_REQUEST);
       }
     }
