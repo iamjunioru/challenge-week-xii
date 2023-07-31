@@ -4,6 +4,7 @@ import { petValidationSchema } from "../models/validators/pet/PetValidationSchem
 import { createPetController } from "../controllers/pet/PetController.create";
 import { putPetsController } from "../controllers/pet/PetController.fullUpdate";
 import { authenticateTutor } from "../middlewares/authenticator";
+import { deletePetController } from "../controllers/pet/PetController.delete";
 import { partialUpdatePetController } from "../controllers/pet/PetController.partialUpdate";
 import { petPartialUpdateValidationSchema } from "../models/validators/pet/PetValidator.partialUpdate";
 import { formatDate } from "../middlewares/formatDate";
@@ -31,6 +32,9 @@ route.patch(
     formatDate,
     partialUpdatePetController
 );
-route.delete("/pet/:petId/tutor/:tutorId");
+route.delete(
+    "/pet/:petId/tutor/:tutorId",
+    authenticateTutor,
+    deletePetController);
 
 export { route };
