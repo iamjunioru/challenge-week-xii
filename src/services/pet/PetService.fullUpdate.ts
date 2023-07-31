@@ -6,9 +6,6 @@ import { Pet } from '../../models/Pet';
 import { getTutor } from '../tutor/TutorService.getOne';
 import { StatusCodes } from 'http-status-codes';
 import CustomError from '../../errors/CustomError';
-
-
-
 export class PetFullUpdateService{
     findById(idPet: string): any {
       throw new Error('Method not implemented.');

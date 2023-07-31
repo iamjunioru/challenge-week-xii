@@ -4,8 +4,6 @@ import { Response } from 'express';
 import { ITutor } from '../../models/interfaces/ITutor';
 import CustomError from '../../errors/CustomError';
 import { StatusCodes } from 'http-status-codes';
-
-
 export class FullUpdateTutor{
     private tutorRepositoryFullUpdate: TutorRepositoryFullUpdate;
 
@@ -26,9 +24,7 @@ export class FullUpdateTutor{
 
         await this.putTutorsData(id, tutorData, res);
 
-
         const updateTutor = await this.tutorRepositoryFullUpdate.updateTutor(id, tutorData);
-        
         const tutorWithoutPasswordId = pick(updateTutor, ['name', 'phone', 'email', 'date_of_birth', 'zip_code']);
         
         return res.status(StatusCodes.OK).json(tutorWithoutPasswordId);
