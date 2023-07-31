@@ -11,7 +11,7 @@ export async function partialUpdatePetService(
   const updatedPet = await partialUpdatePet(petId, updates);
 
   if (!updatedPet) {
-    return res.status(StatusCodes.BAD_REQUEST).json({ msg: `No pet with id ${petId}` });
+    return res.status(StatusCodes.NOT_FOUND).json({ msg: `No pet with id ${petId}` });
   }
 
   res.status(StatusCodes.OK).json(updates);
