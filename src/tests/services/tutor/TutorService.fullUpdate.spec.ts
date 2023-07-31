@@ -5,7 +5,7 @@ import { StatusCodes } from 'http-status-codes';
 import { mock, when} from 'ts-mockito';
 
 
-jest.mock('../repository/tutor/TutorRepository.fullUpdate');
+jest.mock('/src/repository/tutor/TutorRepository.fullUpdate');
 
 describe('FullUpdateTutor', () => {
   let fullUpdateService: FullUpdateTutor;
