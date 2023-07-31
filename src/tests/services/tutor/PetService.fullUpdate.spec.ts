@@ -18,6 +18,10 @@ describe('PetFullUpdateService - Tutor Not Found Test', () => {
     petFullUpdateService = mock(PetFullUpdateService);
   });
 
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
+
   it('should return status 400 if tutor is not found', async () => {
     const idPet = 'eef5ac10-2dc0-4fab-8a15-acb79c613f0c';
     const idTutor = 'noIdTutor';
