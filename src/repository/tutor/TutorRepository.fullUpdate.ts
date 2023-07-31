@@ -1,4 +1,4 @@
-import { Tutor } from "../../models/Tutor";
+import { Tutor } from '../../models/Tutor';
 
 export class TutorRepositoryFullUpdate{
 

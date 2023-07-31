@@ -1,11 +1,11 @@
-import { PetRepository } from "../../repository/pet/PetRepository.fullUpdate";
-import { IPet } from "../../models/interfaces/IPet";
-import { Response } from "express";
-import {pick} from "lodash";
-import { Pet } from "../../models/Pet";
-import { getTutor } from "../tutor/TutorService.getOne";
-import { StatusCodes } from "http-status-codes";
-import CustomError from "../../errors/CustomError";
+import { PetRepository } from '../../repository/pet/PetRepository.fullUpdate';
+import { IPet } from '../../models/interfaces/IPet';
+import { Response } from 'express';
+import {pick} from 'lodash';
+import { Pet } from '../../models/Pet';
+import { getTutor } from '../tutor/TutorService.getOne';
+import { StatusCodes } from 'http-status-codes';
+import CustomError from '../../errors/CustomError';
 
 
 
