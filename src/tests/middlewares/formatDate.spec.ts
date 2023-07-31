@@ -16,7 +16,7 @@ describe('Format date middleware', () => {
         jest.clearAllMocks();
     });
 
-    it('should transform a string into a Date object', () => {
+    it('should transform a string into a Date object', async () => {
         const stringDate = '2010-02-10 10:10';
         req = {
             body: {
@@ -24,7 +24,7 @@ describe('Format date middleware', () => {
             },
         };
 
-        formatDate(req as Request, res as Response, next as NextFunction);
+        await formatDate(req as Request, res as Response, next as NextFunction);
 
         const result: Date = req.body.date_of_birth;
 
@@ -36,10 +36,12 @@ describe('Format date middleware', () => {
         expect(next).toHaveBeenCalled();
     });
 
-    it('should call next when no req.body is passed', () => {
-        req = {};
+    it('should call next when no req.body is passed', async () => {
+        req = {
+            body: {},
+        };
 
-        formatDate(req as Request, res as Response, next as NextFunction);
+        await formatDate(req as Request, res as Response, next as NextFunction);
 
         expect(next).toHaveBeenCalled();
     });
