@@ -20,17 +20,17 @@
 
 ---
 
-<h3>Table | Content</h3>
+<h3>📚 Table | Content</h3>
 
 
-[Installation](#installation) · [Running](#running) · [API Documentation](#api-documentation)
+[🛠 Installation](#installation) · [⚡ Running](#running) · [📚 API Documentation](#api-documentation)
 
 
 ---
 
 
 
-<h3>Features | Routes</h3>
+<h3>🔧 Features | Routes</h3>
 
 </div>
 
@@ -49,7 +49,7 @@
 
 ---
 
-<h3>Project created using:</h3>
+<h3>👩‍💻 Project created using:</h3>
 
 
 
@@ -58,7 +58,7 @@
 ---
 
 ## Installation
-### How to Install:
+### 🛠 How to Install:
 
 Running the project requires the installation of <a href="https://nodejs.org/en">NodeJS</a> and NPM. You can get those in the following link:
 - [Node Installation](https://nodejs.org/en)
@@ -82,7 +82,7 @@ To install all dependencies:
 ```
 
 ## Running
-### How to run:
+### ⚡ How to run:
 
 Create `.env` at Root directory and configure the .env like this:
 ```
@@ -100,7 +100,7 @@ You can start server with:
 ```
 
 ## API Documentation
-
+### 📚 Docs 
 
 #### Update tutor's attributes
 
@@ -142,7 +142,7 @@ You can start server with:
 
  <br>
 <div align="center">
- <h3>Team - Async Coders</h3>
+ <h3>⭐ Team - Async Coders</h3>
  <br>
  
 <!-- prettier-ignore -->
