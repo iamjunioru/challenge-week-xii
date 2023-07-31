@@ -52,25 +52,6 @@
                 "tsx": "never"
             }
         ],
-        "import-helpers/order-imports": [
-            "warn",
-            {
-                "newlinesBetween": "always",
-                "groups": [
-                    "module",
-                    "/^@shared/",
-                    [
-                        "parent",
-                        "sibling",
-                        "index"
-                    ]
-                ],
-                "alphabetize": {
-                    "order": "asc",
-                    "ignoreCase": true
-                }
-            }
-        ],
         "import/no-extraneous-dependencies": [
             "error",
             {
@@ -80,7 +61,6 @@
                 ]
             }
         ],
-        "prettier/prettier": "error",
         "react/jsx-filename-extension": [
             1,
             {

@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import { FullUpdateTutor } from '../../services/tutor/TutorService.fullUpdate';
+import { Request, Response } from "express";
+import { FullUpdateTutor } from "../../services/tutor/TutorService.fullUpdate";
 
 const fullUpdateTutor = new FullUpdateTutor();
 
