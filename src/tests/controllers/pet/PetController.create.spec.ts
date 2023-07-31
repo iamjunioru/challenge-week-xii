@@ -1,19 +1,20 @@
 import { Request, Response } from 'express';
-import * as tutorServ from '../../../services/tutor/TutorService.create';
-import { createTutorController } from '../../../controllers/tutor/TutorController.create';
+import * as petServ from '../../../services/pet/PetService.create';
+import { createPetController } from '../../../controllers/pet/PetController.create';
 import { ITutor } from '../../../models/interfaces/ITutor';
 
-describe('Tutor creation controller', () => {
-    let createTutorMock: any;
+describe('Pet creation controller', () => {
+    let createPetMock: any;
     let req: Partial<Request>;
     let res: Partial<Response>;
 
     beforeAll(() => {
-        createTutorMock = jest
-            .spyOn(tutorServ, 'createTutorService')
+        createPetMock = jest
+            .spyOn(petServ, 'createPetService')
             .mockImplementation(jest.fn());
 
         req = {
+            params: { tutorId: 'abc' },
             body: {},
         };
 
@@ -32,8 +33,8 @@ describe('Tutor creation controller', () => {
     });
 
     it('should call service layer', async () => {
-        await createTutorController(req as Request, res as Response);
+        await createPetController(req as Request, res as Response);
 
-        expect(createTutorMock).toBeCalled();
+        expect(createPetMock).toBeCalled();
     });
 });
