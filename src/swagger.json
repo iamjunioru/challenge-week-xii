@@ -392,7 +392,7 @@
       },
       "/tutors":{
         "get":{
-          "summary": "Tutors search | Authentication Required",
+          "summary": "Tutors search | Authentication required",
           "description": "Search for all tutors",
           "tags": ["Tutor"],
           "security": [{"bearerAuth": []}],
